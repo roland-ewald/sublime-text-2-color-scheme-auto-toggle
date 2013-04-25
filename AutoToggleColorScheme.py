@@ -36,9 +36,9 @@ lon = 12.133333 #Change these to match you location: Eastern long positive, West
 lat = 54.083333 # ... Northern lat. positive, Southern lat. negative (see Sun.py)
 
 class AutoToggleColorScheme(sublime_plugin.EventListener):
-  def on_post_save(self, view):
+  def on_activated(self, view):
     """
-    Checking to toggle color schemes is done after every save, which is not very efficient but ensures a switch at runtime.
+    Checking to toggle color schemes is done after every view activation, which is not very efficient but ensures switches both at runtime and at startup.
     """
     curr_time = time.localtime(time.time())
     times = Sun.Sun().sunRiseSet(curr_time.tm_year, curr_time.tm_mon, curr_time.tm_mday, lon, lat)
